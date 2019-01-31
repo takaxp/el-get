@@ -43,7 +43,7 @@
            (git       (or (executable-find "git")
                           (error "Unable to find `git'")))
            (url       (or (bound-and-true-p el-get-git-install-url)
-                          "https://github.com/dimitri/el-get.git"))
+                          "https://github.com/takaxp/el-get.git"))
            (default-directory el-get-root)
            (process-connection-type nil)   ; pipe, no pty (--no-progress)
 
@@ -51,9 +51,9 @@
            (status
             (apply #'call-process
                    `(,git nil (,buf t) t "--no-pager" "clone" "-v"
-                     ,@(when (boundp 'el-get-install-shallow-clone)
-                         '("--depth" "1"))
-                     ,url ,package))))
+                          ,@(when (boundp 'el-get-install-shallow-clone)
+                              '("--depth" "1"))
+                          ,url ,package))))
 
       (unless (zerop status)
         (error "Couldn't clone el-get from the Git repository: %s" url))
