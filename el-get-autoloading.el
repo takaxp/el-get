@@ -51,7 +51,8 @@
 
 (defun el-get-update-autoloads (package)
   "Regenerate, compile, and load any outdated packages' autoloads."
-  (when (el-get-want-autoloads-p package)
+  (when (and (el-get-want-autoloads-p package)
+             (not el-get-silent-update))
     (message "el-get: updating autoloads for %s" package)
 
     (let ( ;; Generating autoloads runs theses hooks; disable then
@@ -89,7 +90,8 @@
             (kill-buffer visiting))))
 
       (when (file-exists-p el-get-autoload-file)
-        (message "el-get: byte-compiling autoload file")
+        (unless el-get-silent-update
+          (message "el-get: byte-compiling autoload file"))
         (when el-get-byte-compile
           (el-get-byte-compile-file el-get-autoload-file))
 

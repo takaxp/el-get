@@ -365,7 +365,8 @@ fail."
                 (when (process-buffer proc)
                   (set-window-buffer (selected-window) cbuf))
                 (error "el-get: %s %s" cname errorm))
-            (message "el-get: %s" message))
+            (unless el-get-silent-update
+              (message "el-get: %s" message)))
 
           (when cbuf (kill-buffer cbuf))
           (if next
@@ -476,14 +477,16 @@ makes it easier to conditionally splice a command into the list.
                          (dummy  (when infile
                                    (with-temp-file infile
                                      (insert (el-get-print-to-string stdin)))))
-                         (dummy  (message "el-get is waiting for %S to complete" cname))
+                         (dummy  (unless el-get-silent-update
+                                   (message "el-get is waiting for %S to complete" cname)))
                          (status (apply startf program infile cbuf t args))
                          (message (plist-get c :message))
                          (errorm  (plist-get c :error)))
                     (when el-get-verbose
                       (message "%S" (with-current-buffer cbuf (buffer-string))))
                     (if (eq 0 status)
-                        (message "el-get: %s" message)
+                        (unless el-get-silent-update
+                          (message "el-get: %s" message))
                       (set-window-buffer (selected-window) cbuf)
                       (error "el-get: %s %s" cname errorm))
                     (when infile (delete-file infile))
