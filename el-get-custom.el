@@ -126,6 +126,11 @@ operations."
   :group 'el-get
   :type 'boolean)
 
+(defcustom el-get-silent-update nil
+  "Non-nil means suppressing messages when upgrading packages."
+  :group 'el-get
+  :type 'boolean)
+
 (defcustom el-get-byte-compile-at-init nil
   "Whether or not to byte-compile packages at init.
 
