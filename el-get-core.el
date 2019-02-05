@@ -364,7 +364,7 @@ fail."
               (progn
                 (when (process-buffer proc)
                   (set-window-buffer (selected-window) cbuf))
-                (warn "el-get: %s %s" cname errorm))
+                (error "el-get: %s %s" cname errorm))
             (unless el-get-silent-update
               (message "el-get: %s" message)))
 
@@ -462,7 +462,7 @@ makes it easier to conditionally splice a command into the list.
                               (mapcar #'el-get-maybe-shell-quote-argument (plist-get c :args))
                             (plist-get c :args)))
                  (sync    (el-get-plist-get-with-default c :sync
-                            el-get-default-process-sync))
+                                                         el-get-default-process-sync))
                  (stdin   (plist-get c :stdin))
                  (default-directory (if cdir
                                         (file-name-as-directory
@@ -488,7 +488,7 @@ makes it easier to conditionally splice a command into the list.
                         (unless el-get-silent-update
                           (message "el-get: %s" message))
                       (set-window-buffer (selected-window) cbuf)
-                      (error "el-get: %s %s" cname errorm))
+                      (warn "el-get: %s %s" cname errorm))
                     (when infile (delete-file infile))
                     (when cbuf (kill-buffer cbuf))
                     (if next
