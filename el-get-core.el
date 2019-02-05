@@ -364,7 +364,7 @@ fail."
               (progn
                 (when (process-buffer proc)
                   (set-window-buffer (selected-window) cbuf))
-                (error "el-get: %s %s" cname errorm))
+                (warn "el-get: %s %s" cname errorm))
             (unless el-get-silent-update
               (message "el-get: %s" message)))
 
