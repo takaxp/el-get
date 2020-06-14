@@ -1,5 +1,5 @@
 (:name ivy-yasnippet
        :description "Preview yasnippet snippets with ivy"
        :type github
-       :pkgname "mkcms/ivy-yasnippet"
+       :pkgname "takaxp/ivy-yasnippet"
        :depends (dash swiper yasnippet))
