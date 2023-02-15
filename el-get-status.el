@@ -130,7 +130,6 @@
 
 (defun el-get-read-status-file-force ()
   "Forcefully load status file."
-  (message "--- hoge")
   (let* ((ps
           (if (file-exists-p el-get-status-file)
               (car (with-temp-buffer
