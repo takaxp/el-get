@@ -126,6 +126,11 @@ operations."
   :group 'el-get
   :type 'boolean)
 
+(defcustom el-get-silent-update nil
+  "Non-nil means suppressing messages when upgrading packages."
+  :group 'el-get
+  :type 'boolean)
+
 (defcustom el-get-eval-lexical nil
   "Non-nil means evaluate forms with lexical scoping."
   :group 'el-get

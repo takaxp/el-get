@@ -683,7 +683,8 @@ different install methods."
             "Dependencies of package %s should already be installed before updating"
             package)
     (funcall update package url 'el-get-post-update)
-    (message "el-get update %s" package)))
+    (unless el-get-silent-update
+      (message "el-get update %s" package))))
 
 (defvar el-get-update-post-dependency-fun nil
   "Helper variable for updating after dependencies are installed.
