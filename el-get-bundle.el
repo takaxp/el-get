@@ -91,7 +91,7 @@ to the list of keywords that follow
 (defun el-get-bundle-parse-name (sym)
   (let ((spec (split-string (format "%s" sym) ":")) s)
     (when (string= (or (nth 0 spec) "") "github") (setq spec (cdr spec)))
-    (setq s (car spec))
+    ;; (setq s (car spec))
     (cond
      ((and (> (length spec) 2) (string= (car spec) "gist"))
       ;; gist:12345:name
