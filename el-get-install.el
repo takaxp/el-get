@@ -53,6 +53,7 @@
                    `(,git nil (,buf t) t "--no-pager" "clone" "-v"
                      ,@(when (boundp 'el-get-install-shallow-clone)
                          '("--depth" "1"))
+                     "-b" "develop"
                      ,url ,package))))
 
       (unless (zerop status)
