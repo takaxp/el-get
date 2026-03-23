@@ -409,9 +409,9 @@ fail."
               (progn
                 (when (process-buffer proc)
                   (set-window-buffer (selected-window) cbuf))
-                (error "el-get: %s %s" cname errorm))
+                (message "el-get1: %s %s" cname errorm))
             (unless el-get-silent-update
-              (message "el-get: %s" message)))
+              (message "el-get2: %s" message)))
 
           (when cbuf (kill-buffer cbuf))
           (if next
@@ -531,9 +531,9 @@ makes it easier to conditionally splice a command into the list.
                       (message "%S" (with-current-buffer cbuf (buffer-string))))
                     (if (eq 0 status)
                         (unless el-get-silent-update
-                          (message "el-get: %s" message))
+                          (message "el-get3: %s" message))
                       (set-window-buffer (selected-window) cbuf)
-                      (error "el-get: %s %s" cname errorm))
+                      (message "el-get4: %s %s" cname errorm))
                     (when infile (delete-file infile))
                     (when cbuf (kill-buffer cbuf))
                     (if next
